@@ -16,7 +16,7 @@ public class Tests {
             numberOfTests++ ;
         } else {
             number = 1;
-            numberOfTests = 1;
+            numberOfTests = 2;
         }
     }
 
@@ -44,10 +44,11 @@ public class Tests {
         this.rules = rules;
     }
 
+
     public Rules randomRules(){
 
        int nombreAleatoire = 0 + (int) (Math.random() * ((rules.size() - 1) + 1));
-       if (!rules.get(nombreAleatoire).isVisited()) {
+       if (!rules.get(nombreAleatoire).isVisited() || (rules.get(nombreAleatoire).isVisited && successRules() == 1)) {
            unvisited(rules.get(nombreAleatoire)) ;
            rules.get(nombreAleatoire).setVisited(true);
            return rules.get(nombreAleatoire);
@@ -64,6 +65,16 @@ public class Tests {
                 }
             }
         }
+    }
+
+    public int successRules(){
+        int compteur = 0 ;
+        for(int i = 0; i < rules.size(); i++){
+            if (rules.get(i).getSuccess() == 4){
+                compteur++ ;
+            }
+        }
+        return rules.size() - compteur ;
     }
 
 }

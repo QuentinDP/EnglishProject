@@ -10,6 +10,29 @@ public class Rules {
     private int number ;
     private int success = 0 ;
     private boolean isVisited ;
+    private String hint = "" ;
+    private int error = 0 ;
+
+    public Rules(String name, String hint){
+        this.name = name ;
+        this.hint = hint ;
+
+        if (numberOfRules >= 1) {
+            number = numberOfRules ;
+            numberOfRules++ ;
+        } else {
+            number = 1;
+            numberOfRules = 2;
+        }
+    }
+
+    public int getError() {
+        return error;
+    }
+
+    public void setError(int error) {
+        this.error = error;
+    }
 
     public boolean isVisited() {
         return isVisited;
@@ -19,15 +42,12 @@ public class Rules {
         isVisited = visited;
     }
 
-    public Rules(String name){
-        this.name = name ;
-        if (numberOfRules >= 1) {
-            number = numberOfRules ;
-            numberOfRules++ ;
-        } else {
-            number = 1;
-            numberOfRules = 1;
-        }
+    public String getHint() {
+        return hint;
+    }
+
+    public void setHint(String hint) {
+        this.hint = hint;
     }
 
     public int getSuccess(){
